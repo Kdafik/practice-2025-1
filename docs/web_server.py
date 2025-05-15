@@ -93,7 +93,7 @@ class HTTPServer:
         <head><title>{code} {message}</title></head>
         <body>
         <h1>{code} {message}</h1>
-        <p>Произошла ошибка при обработке вашего запроса.</p>
+        <p>An error occurred while processing your request.</p>
         </body>
         </html>
         """.encode('utf-8')

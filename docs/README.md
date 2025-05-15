@@ -150,7 +150,7 @@ if __name__ == '__main__':
 <img src = "media/site.png">  
 
 ### 3. Ошибка 404  
-![Страница 404](https://example.com/404_error.png)  
+<img src = "media/error.png">
 
 ---
 

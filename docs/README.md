@@ -144,10 +144,10 @@ if __name__ == '__main__':
 ## 💻 Пример работы  
 
 ### 1. Запуск сервера  
-<img src = "start.png">  
+<img src = "media/start.png">  
 
 ### 2. Открытие в браузере  
-<img src = "site.png">  
+<img src = "media/site.png">  
 
 ### 3. Ошибка 404  
 ![Страница 404](https://example.com/404_error.png)  

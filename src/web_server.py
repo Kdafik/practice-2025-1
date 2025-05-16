@@ -9,7 +9,7 @@ class HTTPServer:
         self.port = port
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.static_dir = 'static'  # Папка с файлами сайта
+        self.static_dir = '../site'  # Папка с файлами сайта
         self.routes = {
             '/': 'index.html',
             '/about': 'about.html',
@@ -110,9 +110,9 @@ class HTTPServer:
 
 if __name__ == '__main__':
     # Создаем папку static, если её нет
-    if not os.path.exists('static'):
-        os.makedirs('static')
-        print("Создана папка 'static'. Поместите туда файлы вашего сайта.")
+    if not os.path.exists('../site'):
+        os.makedirs('../site')
+        print("Создана папка 'site'. Поместите туда файлы вашего сайта.")
 
     server = HTTPServer()
     server.serve_forever()

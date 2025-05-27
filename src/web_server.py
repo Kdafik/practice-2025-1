@@ -9,7 +9,7 @@ class HTTPServer:
         self.port = port
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.static_dir = '../site'  # Папка с файлами сайта
+        self.static_dir = '../site'
         self.routes = {
             '/': 'index.html',
             '/about': 'about.html',

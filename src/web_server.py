@@ -38,26 +38,21 @@ class HTTPServer:
         if not data:
             return
 
-        # Парсим HTTP-запрос
         request_line = data.split('\r\n')[0]
         method, path, _ = request_line.split()
 
-        # Логирование запроса
         print(f"{datetime.now()} - {method} {path}")
 
-        # Обработка запроса
         if method == 'GET':
             self.handle_get(conn, path)
         else:
             self.send_error(conn, 405, "Method Not Allowed")
 
     def handle_get(self, conn, path):
-        # Проверяем маршруты
         if path in self.routes:
             file_path = os.path.join(self.static_dir, self.routes[path])
             self.serve_file(conn, file_path)
         else:
-            # Пробуем найти файл напрямую
             file_path = os.path.join(self.static_dir, path.lstrip('/'))
             if os.path.exists(file_path) and not os.path.isdir(file_path):
                 self.serve_file(conn, file_path)
@@ -68,13 +63,11 @@ class HTTPServer:
         try:
             with open(file_path, 'rb') as f:
                 content = f.read()
-            
-            # Определяем MIME-тип
+
             mime_type, _ = mimetypes.guess_type(file_path)
             if not mime_type:
                 mime_type = 'text/html'
 
-            # Отправляем успешный ответ
             response = (
                 "HTTP/1.1 200 OK\r\n"
                 f"Content-Type: {mime_type}\r\n"
@@ -109,7 +102,6 @@ class HTTPServer:
         conn.sendall(response)
 
 if __name__ == '__main__':
-    # Создаем папку static, если её нет
     if not os.path.exists('../site'):
         os.makedirs('../site')
         print("Создана папка 'site'. Поместите туда файлы вашего сайта.")
